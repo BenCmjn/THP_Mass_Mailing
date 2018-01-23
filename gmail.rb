@@ -48,6 +48,8 @@ h_recep = recepteurs.zip(nom_recep).to_h # Crée le hash des deux tableaux cré�
 
 
 =begin
+######### Ce bout de code c'est si la liste vient d'un Hash
+
 h_recep.each do |email,nom|
   bonjour = gmail.compose do
     to email
