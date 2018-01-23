@@ -13,20 +13,13 @@ gmail = Gmail.connect(USERNAME, PASSWORD) # Connexion
 # puts gmail.inbox.count # compte dans la boite de reception
 
 #################################### Méthodes #####################
-def send_email_to_line
 
-end
-
+# Pas de méthode
 
 #############################Fin des Méthodes #####################
 ########################## START ##################################
 # On créé un tableau de récepteurs de mon email
-recepteurs = ["alice.thp@yopmail.com","bob.thp@yopmail.com","carole.thp@yopmail.com"]
-# On créé un tableau de noms de récepteurs
-nom_recep = ["Alice","Bob","Carole"]
-# On créé un HASH de récepteurs de mon email
-h_recep = recepteurs.zip(nom_recep).to_h # Crée le hash des deux tableaux créés
-# pp h_recep # affiche proprement ce hash
+
 (1..185).each { |rangée| 
   nom = my_sheet [rangée, 1]
   adresse = my_sheet [rangée, 2]
@@ -48,7 +41,16 @@ h_recep = recepteurs.zip(nom_recep).to_h # Crée le hash des deux tableaux cré�
 
 
 =begin
-######### Ce bout de code c'est si la liste vient d'un Hash
+######### Ici on créé un Hash à partir de 2 arrays
+
+recepteurs = ["alice.thp@yopmail.com","bob.thp@yopmail.com","carole.thp@yopmail.com"]
+# On créé un tableau de noms de récepteurs
+nom_recep = ["Alice","Bob","Carole"]
+# On créé un HASH de récepteurs de mon email
+h_recep = recepteurs.zip(nom_recep).to_h # Crée le hash des deux tableaux créés
+# pp h_recep # affiche proprement ce hash
+
+######### Ce bout de code c'est si la liste d'email vient d'un Hash
 
 h_recep.each do |email,nom|
   bonjour = gmail.compose do
