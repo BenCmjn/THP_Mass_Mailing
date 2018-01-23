@@ -27,9 +27,9 @@ nom_recep = ["Alice","Bob","Carole"]
 # On créé un HASH de récepteurs de mon email
 h_recep = recepteurs.zip(nom_recep).to_h # Crée le hash des deux tableaux créés
 # pp h_recep # affiche proprement ce hash
-(1..3).each { |rangée|
-  nom = my_sheet [rangée, 5]
-  adresse = my_sheet [rangée, 6]
+(1..185).each { |rangée| 
+  nom = my_sheet [rangée, 1]
+  adresse = my_sheet [rangée, 2]
 
   bonjour = gmail.compose do
     to adresse
@@ -40,8 +40,10 @@ h_recep = recepteurs.zip(nom_recep).to_h # Crée le hash des deux tableaux cré�
 	\n Nous vous contactons pour vous parler du projet, et vous dire que vous pouvez ouvrir une cellule à #{nom}, où vous pouvez former gratuitement 6 personnes (ou plus), qu'elles soient débutantes, ou confirmées. Le modèle d'éducation de The Hacking Project n'a pas de limite en terme de nombre de moussaillons (c'est comme cela que l'on appelle les élèves), donc nous serions ravis de travailler avec #{nom} !
 	\n Charles, co-fondateur de The Hacking Project pourra répondre à toutes vos questions : 06.95.46.60.80"
   end
-  gmail.deliver(bonjour) # bonjour.deliver!
-}
+  gmail.deliver(bonjour) # On envoie le mail. On aurait aussi pu écrire "bonjour.deliver!"
+  puts "email envoyé à #{adresse}"
+  sleep(5) #repose toi 5 sec
+} # Fin de la boucle
 
 
 
