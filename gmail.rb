@@ -10,21 +10,20 @@ gmail = Gmail.connect(USERNAME, PASSWORD) # Connexion
 recepteurs = ["alice.thp@yopmail.com","bob.thp@yopmail.com","carole.thp@yopmail.com"]
 # On créé un tableau de noms de récepteurs
 nom_recep = ["Alice","Bob","Carole"]
-
-
 # On créé un HASH de récepteurs de mon email
 h_recep = recepteurs.zip(nom_recep).to_h # Crée le hash des deux tableaux créés
-pp h_recep # affiche proprement ce hash
+# pp h_recep # affiche proprement ce hash
 
-=begin
-recepteurs.each do |recepteur|
-  email = gmail.compose do
-    to recepteur
-    subject "Having fun à THP #{recepteur}!"
-    body "Cher #{recepteur}, \nSpent the day on the code…"
+# binding.pry # Plus tard PRY !
+
+h_recep.each do |email,nom|
+  bonjour = gmail.compose do
+    to email
+    subject "Having fun à THP #{nom}!"
+    body "Cher #{nom}, \n Je suis très contents que tu lise ce mail…"
   end
-  email.deliver! # or: gmail.deliver(email)
+   gmail.deliver(bonjour) # bonjour.deliver!
 end
-=end
 
+puts "les #{h_recep.length} emails ont été envoyés"
 gmail.logout
